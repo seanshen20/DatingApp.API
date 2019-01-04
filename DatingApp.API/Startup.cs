@@ -65,7 +65,7 @@ namespace DatingApp.API
                         IssuerSigningKey =
                             new SymmetricSecurityKey(
                                 Encoding.UTF8.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
-                        ValidateIssuer = true,
+                        ValidateIssuer = false,
                         ValidIssuer = "google",
                         ValidateAudience = false
                     };
