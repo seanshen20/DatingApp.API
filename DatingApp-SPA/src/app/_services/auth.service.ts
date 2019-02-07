@@ -10,7 +10,7 @@ export class AuthService {
   baseUrl = environment.apiUrl + 'auth/';
   jwtHelper = new JwtHelperService();
   decodedToken: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   login(model: any) {
     return this.http.post(this.baseUrl + 'login', model).pipe(
@@ -43,5 +43,14 @@ export class AuthService {
     }
     decoded = this.jwtHelper.decodeToken(token);
     return decoded.unique_name;
+  }
+  getId() {
+    const token = localStorage.getItem('token');
+    let decoded: any;
+    if (token == null) {
+      return null;
+    }
+    decoded = this.jwtHelper.decodeToken(token);
+    return decoded.nameid;
   }
 }

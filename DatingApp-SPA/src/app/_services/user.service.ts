@@ -18,6 +18,11 @@ export class UserService {
   getUser(id): Observable<User> {
     return this.http.get<User>(this.baseUrl + 'user/' + id);
   }
+
+  updateUser(id: number, user: User) {
+    //debugger;
+    return this.http.put(this.baseUrl + 'user/' + id, user);
+  }
 }
 
 /*//replace by jwt tokengetter in module
